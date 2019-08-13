@@ -64,29 +64,18 @@ https://docs.google.com/spreadsheets/d/1pBIr1-0j49gekibWnGIsSDeYE2_Mh4c-Q0Rum_UX
 https://docs.google.com/spreadsheets/d/14KcU_kndu45hB4frvvrnTGrCYnN_r1hyj5d3WbYAo9U/edit#gid=577873772
 
 ## 使用予定Gem
-* active link to
+* active-link-to
 * acts-as-taggable-on
-* bcrypt
-* better_errors
-* binding_of_caller
 * bootstrap
-* brakeman
-* bullet
 * carrierwave
-* coderay
-* database_cleaner
+* capistrano
 * devise
-* dotenv-rails
-* factory_bot_rails
-* faker
+* fog-aws
 * font-awesome-sass
 * high_voltage
 * kaminari
-* launchy
-* letter_opener_web
 * mini_magick
 * ransack
-* rspec-rails
 * rubocop
-* spring-commands-rspec
+* unicorn
 * whenever
