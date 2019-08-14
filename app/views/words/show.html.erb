@@ -1,0 +1,13 @@
+<h1>言葉の詳細</h1>
+<p>タイトル: <%= @word.title %></p>
+<p>言葉: <%= @word.word %></p>
+<p>ソース: <%= @word.source %></p>
+<p>自身のコメント: <%= @word.comment %></p>
+<p>作成日: <%= @word.created_at %></p>
+<p>更新日: <%= @word.updated_at %></p>
+
+ <br>
+
+ <%= link_to '言葉の一覧画面へ', words_path %>
+ <%= link_to "言葉を編集する", edit_word_path(@word) %>
+ <%= link_to 'この言葉を削除する', word_path(@word.id), method: :delete ,data: { confirm: '本当にこの言葉を削除してよろしいですか？' } %>
