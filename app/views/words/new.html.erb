@@ -1,0 +1,30 @@
+<%= form_with(model: Word.new, local: true) do |form| %>
+
+  <% if @word.errors.any? %>
+   <div id="error_explanation">
+     <h2><%= @word.errors.count %>件のエラーがあります。</h2>
+     <ul>
+     <% @word.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+     <% end %>
+     </ul>
+   </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :word %>
+    <%= form.text_area :word, placeholder: "心に響いた言葉を記入してください" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, placeholder: "心に響いた言葉にタイトルをつけましょう" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+  <%= link_to '一覧画面に戻る', words_path %>
+
+<% end %>
