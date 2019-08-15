@@ -1,4 +1,5 @@
 # CASIOPEA
+heroku deployed at: https://rocky-refuge-65766.herokuapp.com/
 
 ## バージョン
 [![Ruby](https://img.shields.io/badge/Ruby-2.6.3-red.svg)](https://docs.ruby-lang.org/ja/2.6.0/doc/index.html)
