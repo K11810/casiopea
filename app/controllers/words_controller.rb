@@ -6,7 +6,7 @@ class WordsController < ApplicationController
   end
 
   def create
-    @word = Word.new(word_params)
+    @word = current_user.words.build(word_params)
     if @word.save
       redirect_to words_path, notice: "新しい言葉を登録しました"
     else
