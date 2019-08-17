@@ -7,6 +7,13 @@
 <p>更新日: <%= @word.updated_at %></p>
 <p>作成者: <%= @word.user.name %></p>
 
+<% if @word.picture? %>
+<p>画像:</p>
+  <%= image_tag @word.picture.url, size: "500x200" %>
+<% end %>
+
+
+
  <br>
 
  <%= link_to '言葉の一覧画面へ', words_path %>
