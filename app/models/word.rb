@@ -1,4 +1,9 @@
 class Word < ApplicationRecord
+
+  # association
+  belongs_to :user
+
+  # validate
   validates :title, presence: true, length: { in: 1..20 }
   validates :word, presence: true, length: { in: 1..500 }
   validates :source, length: { maximum: 500 }
