@@ -17,12 +17,11 @@ gem 'unicorn'
 gem 'mini_racer', platforms: :ruby
 gem 'devise'
 gem 'bcrypt', '~> 3.1.7'
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
-
-# Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
 
 
 group :development, :test do
