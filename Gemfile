@@ -19,6 +19,10 @@ gem 'devise'
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
+gem 'aws-sdk-s3'
+gem 'ed25519'
+gem 'bcrypt_pbkdf'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
