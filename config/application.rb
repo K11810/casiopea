@@ -6,6 +6,9 @@ Bundler.require(*Rails.groups)
 
 module Casiopea
   class Application < Rails::Application
+    # for carrierwave ImageUploader's error
+    config.autoload_paths += Dir[Rails.root.join('app', 'uploaders')]
+
     config.load_defaults 5.2
 
     config.i18n.default_locale = :ja
