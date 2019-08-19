@@ -8,6 +8,7 @@ class WordsController < ApplicationController
   def create
     @word = current_user.words.build(word_params)
     if @word.save
+      ContactMailer.contact_mail(@word).deliver
       redirect_to words_path, notice: "新しい言葉を登録しました"
     else
       render 'new'
