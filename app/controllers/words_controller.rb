@@ -1,6 +1,8 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
 
+PER = 9
+
   def new
     @word = Word.new
   end
@@ -16,7 +18,7 @@ class WordsController < ApplicationController
   end
 
   def index
-    @words = Word.all
+    @words = Word.page(params[:page]).per(PER)
   end
 
   def show
