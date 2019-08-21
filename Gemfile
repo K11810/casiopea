@@ -25,6 +25,9 @@ gem 'ed25519'
 gem 'bcrypt_pbkdf'
 gem 'faker'
 
+# notification
+gem 'whenever', require: false
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 

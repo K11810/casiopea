@@ -1,0 +1,8 @@
+<h1>Hello, <%= @user.name %>!!</h1>
+
+<% @words.each do |word| %>
+  <tr>
+    <td>タイトル:<%= word.title %></td>
+    <td>言葉:<%= word.word %></td>    
+  </tr>
+<% end %>
