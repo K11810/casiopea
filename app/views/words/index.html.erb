@@ -4,17 +4,19 @@
   <table>
   <thead>
     <tr>
-      <th>タイトル</th>
-      <th>言葉</th>
+      <th><%= sort_link(@q, :title, "タイトル", default_order: :desc) %></th>
+      <th><%= sort_link(@q, :word, "言葉", default_order: :desc) %></th>
+      <th><%= sort_link(@q, :created_at, "投稿日", default_order: :desc) %></th>
     </tr>
   </thead>
 
    <tbody>
-    <% @words.each do |word| %>
+    <% @search_words.each do |word| %>
       <tr>
         <td><%= word.title %></td>
         <td><%= word.word %></td>
-        <td>作成者: <%= word.user.name %></td>
+        <td><%= word.created_at %></td>
+        <td><%= word.user.name %></td>
         <td><%= link_to '詳細を見る', word_path(word.id) %></td>
         <td><%= link_to "言葉を編集する", edit_word_path(word.id) %></td>
     　　<td><%= link_to '言葉を削除する', word_path(word.id), method: :delete ,data: { confirm: '本当にこの言葉を削除してよろしいですか？' } %></td>

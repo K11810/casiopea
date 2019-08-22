@@ -28,8 +28,15 @@ gem 'faker'
 # notification
 gem 'whenever', require: false
 
-#pagenation
+# pagination
 gem 'kaminari'
+
+# search & sort
+gem 'ransack'
+
+# help to kill N+1
+gem 'bullet'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

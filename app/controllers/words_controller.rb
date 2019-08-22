@@ -18,6 +18,7 @@ PER = 9
   end
 
   def index
+    @q = User.ransack(params[:q])
     @words = Word.page(params[:page]).per(PER)
   end
 
