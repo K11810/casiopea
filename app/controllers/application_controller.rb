@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def set_search
     @search = Word.ransack(params[:q])
-    @search_words = @search.result.page(params[:page]).per(PER)
+    @search_words = @search.result.includes(:user).page(params[:page]).per(PER)
   end
 
   # for CSRF measure
