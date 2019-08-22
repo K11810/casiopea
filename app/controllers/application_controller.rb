@@ -1,4 +1,14 @@
 class ApplicationController < ActionController::Base
+
+  before_action :set_search
+
+  PER = 9
+
+  def set_search
+    @search = Word.ransack(params[:q])
+    @search_words = @search.result.includes(:user).page(params[:page]).per(PER)
+  end
+
   # for CSRF measure
   protect_from_forgery with: :exception
 
