@@ -37,6 +37,8 @@ gem 'ransack'
 # help to kill N+1
 gem 'bullet'
 
+# tag
+gem 'acts-as-taggable-on'
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
