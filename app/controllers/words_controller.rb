@@ -47,7 +47,16 @@ PER = 9
   end
 
   def word_params
-    params.require(:word).permit(:title, :word, :source, :comment, :picture, :picture_cache)
+    params.require(:word).permit(
+      :title,
+      :word,
+      :source,
+      :comment,
+      :picture,
+      :picture_cache,
+      :emotion_list,
+      :reference_list
+    )
   end
 
 end

@@ -36,6 +36,16 @@
     <%= form.file_field :picture %>
   </div>
 
+  <div class="field">
+    <%= form.label :emotion_list, "感情タグ" %><br>
+    <%= text_field_tag 'word[emotion_list]', @word.emotion_list.join(',') %>
+  </div>
+
+  <div class="field">
+    <%= form.label :emotion_list, "参考タグ" %><br>
+    <%= text_field_tag 'word[reference_list]', @word.reference_list.join(',') %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
