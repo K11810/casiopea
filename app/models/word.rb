@@ -5,7 +5,7 @@ class Word < ApplicationRecord
 
   # tag function
   acts_as_taggable
-  acts_as_taggable_on :emotions, :references
+  acts_as_taggable_on :tags
 
   # validate
   validates :title, presence: true, length: { in: 1..20 }

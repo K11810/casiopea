@@ -1,8 +1,6 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
 
-PER = 9
-
   def new
     @word = Word.new
   end
@@ -15,11 +13,6 @@ PER = 9
     else
       render 'new'
     end
-  end
-
-  def index
-    @q = User.ransack(params[:q])
-    @words = Word.page(params[:page]).per(PER)
   end
 
   def show
@@ -41,6 +34,7 @@ PER = 9
     end
   end
 
+
   private
   def set_word
     @word = Word.find(params[:id])
@@ -54,8 +48,7 @@ PER = 9
       :comment,
       :picture,
       :picture_cache,
-      :emotion_list,
-      :reference_list
+      :tag_list,
     )
   end
 
