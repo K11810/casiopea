@@ -33,7 +33,10 @@
 
   <div class="field">
     <%= form.label :picture %>
-    <%= form.file_field :picture %>
+    <label><%= form.check_box :remove_picture %> 画像を削除</label>
+    <%= form.file_field :picture, id: :word_image %>
+    <%= image_tag(@word.picture.url, size: "500x200") if @word.picture && @word.picture.url%>
+    <%= form.hidden_field :picture_cache %>
   </div>
 
   <div class="field">

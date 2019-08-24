@@ -27,9 +27,9 @@ class ApplicationController < ActionController::Base
   protected
   def configure_permitted_parameters
     # add strong parameter of 'name' in sign_up
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :icon])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :icon, :icon_cache, :remove_icon])
     # add strong parameters of 'name' and 'icon' in account edit
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :icon])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :icon, :icon_cache, :remove_icon])
   end
 
   # move words/index after login
