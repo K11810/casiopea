@@ -11,7 +11,7 @@ end
   word = Faker::Movies::StarWars.quote
   source = Faker::Movies::StarWars.character
   comment = "May the Forth be with you"
-  user_id = 1
+  user_id = 3
   Word.create!(title: title,
                word: word,
                source: source,
