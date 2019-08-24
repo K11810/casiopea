@@ -1,3 +1,8 @@
 <h1>Users#show</h1>
 <p>名前 : <%= @user.name %></p>
 <p>メールアドレス : <%= @user.email %></p>
+<% if @user.icon? %>
+  <%= image_tag @user.icon.url, size: "210x210" %>
+<% else %>
+  <%= image_tag("/user_images/default_user.jpg", size: "210x210") %>
+<% end %>

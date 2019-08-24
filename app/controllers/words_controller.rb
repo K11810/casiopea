@@ -48,6 +48,7 @@ class WordsController < ApplicationController
       :comment,
       :picture,
       :picture_cache,
+      :remove_picture,
       :tag_list,
     )
   end
