@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Casiopea</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CASIOPEA</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,44 +17,68 @@
 
   <body>
 
-    <%= link_to "CASIOPEA", root_path %>
+  <header>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <% if user_signed_in? %>
+            <div class="container">
+              <%= link_to "CASIOPEA", homes_about_path, class: "navbar-brand" %>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
 
-    <% if user_signed_in? %>
-    <dl class="searchbox">
-      <%= search_form_for @search, url: words_path do |f| %>
-        <dt><%= f.text_field :title_or_word_cont, placeholder: '検索するテキストを入力' %></dt>
-        <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
-      <% end %>
-    </dl>
+            <dl class="searchbox">
+              <%= search_form_for @search, url: words_path do |f| %>
+                <dt><%= f.text_field :title_or_word_cont, placeholder: '検索するテキストを入力' %></dt>
+                <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+              <% end %>
+            </dl>
 
-    <dl class="searchbox">
-      <%= search_form_for @search, url: words_path do |f| %>
-        <dt><%= f.text_field :tags_name_cont,placeholder: '検索するタグを入力' %></dt>
-        <%= f.hidden_field :search, value: 'true' %>
-        <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
-      <% end %>
-    </dl>
+            <dl class="searchbox">
+              <%= search_form_for @search, url: words_path do |f| %>
+                <dt><%= f.text_field :tags_name_cont,placeholder: '検索するタグを入力' %></dt>
+                <%= f.hidden_field :search, value: 'true' %>
+                <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+              <% end %>
+            </dl>
 
-      <%= link_to "投稿", words_path %>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      ログインユーザ：<%= current_user.name %>
+              <li class="nav-item">
+                <%= link_to "プロフィール", user_path(current_user.id), class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "投稿一覧", words_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "言葉の投稿", new_word_path, class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+              </li>
 
-    <% else %>
-      <%= link_to "about", homes_about_path %>
-      <%= link_to "新規登録", new_user_registration_path %>
-      <%= link_to "ログイン", new_user_session_path %>
+            <% else %>
 
-    <% end %>
+          <div class="container">
+            <%= link_to "CASIOPEA", root_path, class: "navbar-brand" %>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <%= link_to "about", homes_about_path, class: "nav-link" %>
+              </li>
+                <li class="nav-item">
+                  <%= link_to "サインアップ", new_user_registration_path, class: "nav-link" %>
+                </li>
+                  <li class="nav-item">
+                  <%= link_to "ログイン", user_session_path, class: "nav-link", class: "nav-link" %>
+                </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
 
 
-
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
-    <% end %>
 
     <%= yield %>
+
   </body>
+
 </html>
