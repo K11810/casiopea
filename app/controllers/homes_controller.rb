@@ -1,7 +1,8 @@
 class HomesController < ApplicationController
-  def top
-  end
+  skip_before_action :authenticate_user!
+  before_action :forbid_login_user, only: [:top]
 
-  def about
-  end
+  def top; end
+
+  def about; end
 end
