@@ -1,5 +1,6 @@
 class WordsController < ApplicationController
   before_action :set_word, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit,:update,:destroy]
 
   def new
     @word = Word.new
@@ -52,5 +53,13 @@ class WordsController < ApplicationController
       :tag_list,
     )
   end
+
+  # ログインユーザのみ投稿の編集・削除許可
+  def ensure_correct_user
+    if current_user.id != @word.user_id
+      redirect_to words_path, notice: "権限がありません"
+    end
+  end
+
 
 end

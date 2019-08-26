@@ -10,6 +10,10 @@
   </head>
 
   <body>
+
+    <%= link_to "CASIOPEA", root_path %>
+
+    <% if user_signed_in? %>
     <dl class="searchbox">
       <%= search_form_for @search, url: words_path do |f| %>
         <dt><%= f.text_field :title_or_word_cont, placeholder: '検索するテキストを入力' %></dt>
@@ -25,14 +29,18 @@
       <% end %>
     </dl>
 
-
-    <% if user_signed_in? %>
       <%= link_to "投稿", words_path %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      ログインユーザ：<%= current_user.name %>
+
     <% else %>
+      <%= link_to "about", homes_about_path %>
       <%= link_to "新規登録", new_user_registration_path %>
       <%= link_to "ログイン", new_user_session_path %>
+
     <% end %>
+
+
 
     <% if notice %>
       <p class="alert alert-notice"><%= notice %></p>
