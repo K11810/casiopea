@@ -29,7 +29,7 @@ class WordsController < ApplicationController
 
   def update
     if @word.update(word_params)
-      redirect_to words_path, notice: "登録されていた言葉を削除しました"
+      redirect_to words_path, notice: "登録されていた言葉を更新しました"
     else
       render 'edit'
     end

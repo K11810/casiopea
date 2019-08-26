@@ -1,58 +1,65 @@
-<%= form_with(model: @word, local: true) do |form| %>
+<div class="container">
+  <h1 class="mt-4 mb-3">言葉の編集</h1>
+    <%= form_with(model: @word, local: true) do |form| %>
+      <% if @word.errors.any? %>
+       <div id="error_explanation">
+         <h2><%= @word.errors.count %>件のエラーがあります。</h2>
+         <ul>
+         <% @word.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+         </ul>
+       </div>
+      <% end %>
+      <div class="row">
+        <div class="col-lg-8 mb-4">
+            <div class="control-group form-group">
+              <div class="controls">
+                <%= form.label :title %>
+                <%= form.text_field :title, placeholder: "心に響いた言葉にタイトルをつけましょう", class:"form-control", id:"title" %>
+              </div>
+            </div>
+            <div class="control-group form-group">
+              <div class="controls">
+                <%= form.label :word %>
+                <%= form.text_area :word, placeholder: "心に響いた言葉を記入してください",rows:"10", cols:"100", class:"form-control", id:"word", style:"resize:none" %>
+              </div>
+            </div>
+            <div class="control-group form-group">
+              <div class="controls">
+                <%= form.label :source %>
+                <%= form.text_field :source, placeholder: "言葉のソースを入力しましょう(例:発言者・本のタイトル・ネットのURLなど)", class:"form-control", id:"source" %>
+              </div>
+            </div>
+            <div class="control-group form-group">
+              <div class="controls">
+                <%= form.label :comment %>
+                <%= form.text_area :comment, placeholder: "言葉に対するあなたの思い・考えを入力しましょう", rows:"10", cols:"100", class:"form-control", id:"comment", style:"resize:none" %>
+              </div>
+            </div>
+            <div class="control-group form-group">
+              <div class="controls">
+                <%= form.label :emotion_list, "タグ" %>※カンマ区切りで複数のタグを登録出来ます。
+                <%= text_field_tag 'word[tag_list]', @word.tag_list.join(','), class:"form-control", id:"tag", placeholder: "言葉に関する感情・考えなどを表すタグを付けましょう" %>
+              </div>
+            </div>
+            <div class="control-group form-group">
+              <div class="controls">
+              <%= form.label :picture %><br>
+              <%= form.file_field :picture, id: :word_image %>
+              <%= image_tag(@word.picture.url, size: "500x200") if @word.picture && @word.picture.url%>
+              <%= form.hidden_field :picture_cache %><br>
+              <label><%= form.check_box :remove_picture %> 画像を削除</label>
+            </div>
+          </div>
 
-  <% if @word.errors.any? %>
-   <div id="error_explanation">
-     <h2><%= @word.errors.count %>件のエラーがあります。</h2>
-     <ul>
-     <% @word.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
-     <% end %>
-     </ul>
-   </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, placeholder: "心に響いた言葉にタイトルをつけましょう" %>
+            <div class="actions">
+              <%= form.submit class:"btn btn-primary", id:"sendMessageButton"%><br><br>
+            </div>
+              <%= link_to '一覧画面に戻る', words_path,class:"btn btn-primary", id:"sendMessageButton" %>
+              <%= link_to 'この言葉の詳細画面へ', @word,class:"btn btn-primary", id:"sendMessageButton" %><br><br><br>
+              <%= link_to 'この言葉を削除する', word_path(@word.id), method: :delete ,data: { confirm: '本当にこの言葉を削除してよろしいですか？' },class:"btn btn-secondary", id:"sendMessageButton" %>
+    <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :word %>
-    <%= form.text_area :word, placeholder: "心に響いた言葉を記入してください" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :source %>
-    <%= form.text_field :source, placeholder: "言葉のソースを入力しましょう(例:発言者・本のタイトル・ネットのURLなど)" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment, placeholder: "言葉に対するあなたの思い・考えを入力しましょう" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :picture %>
-    <label><%= form.check_box :remove_picture %> 画像を削除</label>
-    <%= form.file_field :picture, id: :word_image %>
-    <%= image_tag(@word.picture.url, size: "500x200") if @word.picture && @word.picture.url%>
-    <%= form.hidden_field :picture_cache %>
-  </div>
-
-  <div class="field">
-    <%= form.label :emotion_list, "タグ" %><br>
-    <%= text_field_tag 'word[tag_list]', @word.tag_list.join(',') %>
-  </div>
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
-  <%= link_to '一覧画面に戻る', words_path %>
-  <%= link_to 'この言葉の詳細画面へ', @word %>
-  <br>
-  <br>
-  <br>
-　<%= link_to 'この言葉を削除する', word_path(@word.id), method: :delete ,data: { confirm: '本当にこの言葉を削除してよろしいですか？' } %>
-<% end %>
+</div>

@@ -1,38 +1,53 @@
-<h1>投稿した言葉一覧</h1>
-<%= link_to '新しい言葉を投稿する', new_word_path %>
-
-  <table>
-  <thead>
+<!-- Page Content -->
+<div class="container">
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">投稿した言葉一覧</h1>
+    <%= notice %><br>
     <tr>
-      <th><%= sort_link(@search, :title, "タイトル", default_order: :desc) %></th>
-      <th><%= sort_link(@search, :word, "言葉", default_order: :desc) %></th>
-      <th><%= sort_link(@search, :created_at, "投稿日", default_order: :desc) %></th>
-      <th>タグ</th>
-      <th>投稿者</th>
+      <th><%= sort_link(@search, :title, "タイトルで並び替え", default_order: :desc) %></th>
+      <th><%= sort_link(@search, :word, "言葉で並び替え", default_order: :desc) %></th>
+      <th><%= sort_link(@search, :created_at, "投稿日で並び替え", default_order: :desc) %></th>
     </tr>
-  </thead>
 
    <tbody>
     <% @search_words.each do |word| %>
-      <tr>
-        <td><%= link_to word.title,word_path(word.id) %></td>
-        <td><%= link_to word.word,word_path(word.id) %></td>
-        <td><%= word.created_at.strftime("%Y年%m月%d日") %></td>
-        <td><%= render 'words/tag_list', tag_list: word.tag_list %></td>
-        <td><%= link_to word.user.name, user_path(word.user.id) %></td>
 
-          <% if word.user_id == current_user.id %>
-          <td><%= link_to "編集", edit_word_path(word.id) %></td>
-      　　<td><%= link_to '言葉の削除', word_path(word.id), method: :delete ,data: { confirm: '本当にこの言葉を削除してよろしいですか？' } %></td>
-        <% end %>
-
-      </tr>
+    <div class="card mb-4">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-6">
+              <% if word.picture? %>
+                <%= image_tag word.picture.url, class:"img-fluid rounded" %>
+              <% else %>
+                <%= image_tag("http://placehold.it/750x300", class:"img-fluid rounded") %>
+              <% end %>
+          </div>
+          <div class="col-lg-6">
+            <h2 class="card-title"><%= word.title %></h2>
+            <p class="card-text"><%= word.word %></p>
+            <br>
+            タグ：
+            <%= render 'words/tag_list', tag_list: word.tag_list %>
+            <br>
+            <br>
+            <%= link_to '詳細を見る', word_path(word.id), class:"btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer text-muted">
+        <%= word.created_at.strftime("%Y年%m月%d日") %>　by <%= link_to word.user.name, user_path(word.user.id) %>
+      </div>
+    </div>
     <% end %>
-    </table>
-  </tbody>
-</table>
 
  <br>
-<%= link_to '新しい言葉を投稿する', new_word_path %>
 
-<%= paginate @search_words %>
+<!-- Pagination -->
+<ul class="pagination justify-content-center mb-4">
+  <li class="page-item">
+      <%= paginate @search_words, class:"page-link" %>
+  </li>
+</ul>
+
+</div>
+<!-- /.container -->

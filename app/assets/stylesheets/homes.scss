@@ -1,3 +1,54 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.main {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.article {
+  width: 100%;
+  min-height: 100%;
+  margin: 30px auto 0;
+  max-width: 935px;
+  padding-bottom: 44px;
+}
+
+
+.login_form_container {
+  margin: auto;
+  width: 350px;
+  height: 350px;
+  margin-bottom: 10px;
+  color: #262626;
+  background-color: #fff;
+  border:1px solid #e6e6e6;
+  border-radius: 1px;
+  text-align: center;
+  padding: 50px 40px ;
+}
+
+.login_form_title p{
+  font-size: 40px;
+}
+
+.login_form_main_container {
+  color: #262626;
+  font-size: 14px;
+  width:100%;
+}
+
+.to_session_container {
+  margin: auto;
+  width: 350px;
+  height: 50px;
+  background-color: #fff;
+  border:1px solid #e6e6e6;
+  border-radius: 1px;
+  text-align: center;
+  padding: 15px;
+}

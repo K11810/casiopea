@@ -1,30 +1,36 @@
-<%= form_with(model: Word.new, local: true) do |form| %>
+<div class="container">
+  <h1 class="mt-4 mb-3">言葉の投稿</h1>
+    <%= form_with(model: Word.new, local: true) do |form| %>
 
-  <% if @word.errors.any? %>
-   <div id="error_explanation">
-     <h2><%= @word.errors.count %>件のエラーがあります。</h2>
-     <ul>
-     <% @word.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
-     <% end %>
-     </ul>
-   </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :word %>
-    <%= form.text_area :word, placeholder: "心に響いた言葉を記入してください" %>
+      <% if @word.errors.any? %>
+       <div id="error_explanation">
+         <h2><%= @word.errors.count %>件のエラーがあります。</h2>
+         <ul>
+         <% @word.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+         </ul>
+       </div>
+      <% end %>
+      <div class="row">
+        <div class="col-lg-8 mb-4">
+          <div class="control-group form-group">
+            <div class="controls">
+              <%= form.label :word %>
+              <%= form.text_area :word, placeholder: "心に響いた言葉を記入してください",rows:"10", cols:"100", class:"form-control", id:"message", style:"resize:none" %>
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+              <%= form.label :title %>
+              <%= form.text_field :title, placeholder: "心に響いた言葉にタイトルをつけましょう", class:"form-control", id:"name" %>
+            </div>
+          </div>
+          <div class="actions">
+            <%= form.submit class:"btn btn-primary", id:"sendMessageButton"%><br><br>
+          </div>
+            <%= link_to '一覧画面に戻る', words_path,class:"btn btn-secondary", id:"sendMessageButton" %>
+    <% end %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, placeholder: "心に響いた言葉にタイトルをつけましょう" %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-
-  <%= link_to '一覧画面に戻る', words_path %>
-
-<% end %>
+</div>
