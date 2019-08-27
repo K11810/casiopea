@@ -1,13 +1,17 @@
 <div class="container">
   <h1 class="mt-4 mb-3">ユーザー情報</h1>
     <p>名前 : <%= @user.name %></p>
-    <p>メールアドレス : <%= @user.email %></p>
+
+    <% if @user.id == current_user.id %>
+        <p>メールアドレス : <%= @user.email %></p>
+    <% end %>
+
     <% if @user.icon? %>
       <%= image_tag @user.icon.url, size: "210x210" %>
     <% else %>
       <%= image_tag("/user_images/default_user.jpg", size: "210x210") %><br><br><br>
     <% end %>
     <% if @user.id == current_user.id %>
-    <%= link_to "ユーザー情報を編集する", edit_user_registration_path(@edit), class:"btn btn-primary" %>
+      <%= link_to "ユーザー情報を編集する", edit_user_registration_path(@edit), class:"btn btn-primary" %>
     <% end %>
 </div>

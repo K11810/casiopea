@@ -2,7 +2,7 @@
 <div class="container">
   <!-- Page Heading/Breadcrumbs -->
   <h1 class="mt-4 mb-3">投稿した言葉一覧</h1>
-    <%= notice %><br>
+
     <tr>
       <th><%= sort_link(@search, :title, "タイトルで並び替え", default_order: :desc) %></th>
       <th><%= sort_link(@search, :word, "言葉で並び替え", default_order: :desc) %></th>
@@ -23,8 +23,8 @@
               <% end %>
           </div>
           <div class="col-lg-6">
-            <h2 class="card-title"><%= word.title %></h2>
-            <p class="card-text"><%= word.word %></p>
+            <h2 class="card-text"><%= word.word %></h2>
+            <p class="card-title"><%= word.title %></p>
             <br>
             タグ：
             <%= render 'words/tag_list', tag_list: word.tag_list %>
