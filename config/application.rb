@@ -27,5 +27,9 @@ module Casiopea
     config.time_zone = 'Tokyo'
     config.active_record.default_timezone = :local
 
+    Rails.application.config.assets.paths << Rails.root.join('vendor', 'bootstrap')
+    Rails.application.config.assets.paths << Rails.root.join('vendor', 'jquery')
+    Rails.application.config.assets.precompile += %w(*.eot *.woff *.woff2 *.ttf *.svg *.otf *.png *.jpg *.gif )
+
   end
 end
