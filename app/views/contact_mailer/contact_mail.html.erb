@@ -1,7 +1,7 @@
-<h1>新しい言葉を登録しました！</h1>
+<h1>新しい言葉が登録されました</h1>
 
-<h4>name: <%= @word.user.name %></h4>
+<h4>言葉: <%= @word.word %></h4>
 
-<p>言葉: <%= @word.word %></p>
 <p>タイトル: <%= @word.title %></p>
-<p>作成日: <%= @word.created_at %></p>
+<p>作成日: <%= @word.created_at.strftime("%Y年%m月%d日") %></p>
+<p>投稿者: <%= @word.user.name %></p>
