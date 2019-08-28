@@ -1,17 +1,21 @@
 require "rails_helper"
 
-RSpec.describe ContactMailer, type: :mailer do
-  describe "contact_mail" do
-    let(:mail) { ContactMailer.contact_mail }
+RSpec.feature "word投稿時のメール機能", type: :feature do
 
-    it "renders the headers" do
-      expect(mail.subject).to eq("Contact mail")
-      expect(mail.to).to eq(["to@example.org"])
-      expect(mail.from).to eq(["from@example.com"])
-    end
+  background do
+    @user = create(:user)
+    @user2 = create(:user2)
+    @wordtest1 = create(:word, user: @user)
+    @wordtest2 = create(:second_word, user: @user2)
+  end
 
-    it "renders the body" do
-      expect(mail.body.encoded).to match("Hi")
+  feature "contact_mail機能テスト" do
+    given(:mail) { ContactMailer.contact_mail(@wordtest1) }
+
+    scenario "contact_mailテスト" do
+      expect(mail.subject).to eq("新しい言葉が登録されました")
+      expect(mail.to).to eq(["#{@wordtest1.user.email}"])
+      expect(mail.from).to eq(["CASIOPEA@example.com"])
     end
   end
 

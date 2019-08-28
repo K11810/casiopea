@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
     # @tags = ActsAsTaggableOn::Tag.all
     if params[:tag_name]
       words = Word.tagged_with(params[:tag_name].to_s)
-      @search_words = words.includes(:user,:taggings).page(params[:page]).per(PER)
+      @search_words = words.includes(:user,:taggings).order(created_at: :desc).page(params[:page]).per(PER)
     else
-      @search_words = @search.result(distinct: true).includes(:user,:taggings).page(params[:page]).per(PER)
+      @search_words = @search.result(distinct: true).includes(:user,:taggings).order(created_at: :desc).page(params[:page]).per(PER)
     end
   end
 

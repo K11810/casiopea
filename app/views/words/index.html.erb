@@ -4,9 +4,10 @@
   <h1 class="mt-4 mb-3">投稿した言葉一覧</h1>
 
     <tr>
-      <th><%= sort_link(@search, :title, "タイトルで並び替え", default_order: :desc) %></th>
-      <th><%= sort_link(@search, :word, "言葉で並び替え", default_order: :desc) %></th>
-      <th><%= sort_link(@search, :created_at, "投稿日で並び替え", default_order: :desc) %></th>
+      <th><%= sort_link(@search, :title, "◇タイトルを五十音順で並び替え", default_order: :desc) %></th>
+      <th><%= sort_link(@search, :word, "◇言葉を五十音順で並び替え", default_order: :desc) %></th>
+      <th><%= sort_link(@search, :created_at, "◇投稿日で並び替え", default_order: :desc) %></th>
+      <th><%= link_to '◇検索結果をクリア', words_path %><th>
     </tr>
 
    <tbody>
@@ -41,6 +42,7 @@
     <% end %>
 
  <br>
+
 
 <!-- Pagination -->
 <ul class="pagination justify-content-center mb-4">

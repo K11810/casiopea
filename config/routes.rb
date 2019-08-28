@@ -12,6 +12,5 @@ Rails.application.routes.draw do
 
   get 'homes/about'
 
-  resources :words do
-  end
+  resources :words
 end
