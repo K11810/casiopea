@@ -43,7 +43,7 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "タイトルでの並び替え可否テスト" do
     visit words_path
-    click_on 'タイトルで並び替え'
+    click_on '◇タイトルを五十音順で並び替え'
     @words = page.all('p.card-title')
     expect(@words[0]).to have_content 'test_word_02'
     expect(@words[1]).to have_content 'test_word_01'
@@ -51,7 +51,7 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "言葉での並び替え可否テスト" do
     visit words_path
-    click_on '言葉で並び替え'
+    click_on '◇言葉を五十音順で並び替え'
     @words = page.all('h2.card-text')
     expect(@words[0]).to have_content 'testtesttest_02'
     expect(@words[1]).to have_content 'testtesttest_01'
@@ -59,10 +59,21 @@ RSpec.feature "タスク管理機能", type: :feature do
 
   scenario "投稿日での並び替え可否テスト" do
     visit words_path
-    click_on '投稿日で並び替え'
+    click_on '◇投稿日で並び替え'
     @words = Word.all.order("created_at desc")
     expect(@words[0].created_at > @words[1].created_at).to be true
   end
+
+  scenario "検索クリア可否テスト" do
+    visit words_path
+    fill_in 'title_or_word_search', with: '01'
+    click_on '言葉で検索'
+    visit words_path
+    click_on '◇検索結果をクリア'
+    expect(page).to have_content 'test_word_01'
+    expect(page).to have_content 'test_word_02'
+  end
+
 
   scenario "言葉の編集画面への遷移・編集テスト" do
     visit edit_word_path(@wordtest1.id)
