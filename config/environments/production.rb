@@ -94,7 +94,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # SendGrid
- config.action_mailer.default_url_options = { host: 'rocky-refuge-65766.herokuapp.com' }
+ config.action_mailer.default_url_options = { host: '52.194.195.18' }
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
